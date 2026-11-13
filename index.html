@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11110f">
+    <title>Rumi — your next favorite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Rumi home">rumi<span>.</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#catalog">Discover</a>
+        <a class="nav-link" href="#catalog" data-nav-filter="movie">Movies</a>
+        <a class="nav-link" href="#catalog" data-nav-filter="game">Games</a>
+      </nav>
+      <button class="button button-outline header-import" type="button" data-import>
+        <span aria-hidden="true">＋</span> Import list
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> A little something for every mood</p>
+          <h1 id="hero-title">Find your<br>next <span>favorite.</span></h1>
+          <p class="hero-description">A home for the movies you love and the games you can't put down.</p>
+          <a class="button button-primary hero-button" href="#catalog">Explore the collection <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div>
+          <div class="art-disc disc-back"></div>
+          <div class="art-disc disc-front"><span>R</span></div>
+          <span class="art-spark spark-one">✳</span>
+          <span class="art-spark spark-two">✳</span>
+          <span class="art-caption">CURIOSITY<br>LOOKS GOOD ON YOU</span>
+        </div>
+        <div class="hero-index"><span>01</span> / YOUR PERSONAL CULTURE CLUB</div>
+      </section>
+
+      <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-eyebrow">The collection</p>
+            <h2 id="catalog-title">Good things, <span>all in one place.</span></h2>
+          </div>
+          <p class="catalog-count" id="catalog-count" aria-live="polite">0 titles</p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="filter-tabs" role="group" aria-label="Filter by type">
+            <button class="filter-tab active" type="button" data-filter="all" aria-pressed="true">Everything <span id="all-count">0</span></button>
+            <button class="filter-tab" type="button" data-filter="movie" aria-pressed="false">Movies <span id="movie-count">0</span></button>
+            <button class="filter-tab" type="button" data-filter="game" aria-pressed="false">Games <span id="game-count">0</span></button>
+          </div>
+          <div class="toolbar-controls">
+            <label class="search-box">
+              <span class="sr-only">Search titles</span>
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input id="search" type="search" placeholder="Search the collection" autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Sort collection</span>
+              <select id="sort">
+                <option value="featured">Featured</option>
+                <option value="title">Title A–Z</option>
+                <option value="year-new">Year: newest</option>
+                <option value="year-old">Year: oldest</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <div class="empty-icon" aria-hidden="true">✳</div>
+          <h3 id="empty-title">Your collection starts here.</h3>
+          <p id="empty-description">Import your movie and game list to make this space yours.</p>
+          <button class="button button-primary" type="button" data-import>Import your list <span aria-hidden="true">↗</span></button>
+          <button class="template-link" type="button" id="download-template">Download a CSV template</button>
+        </div>
+        <p class="catalog-note">Your list is saved in this browser. Add only titles and links you have permission to share.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark footer-wordmark" href="#">rumi<span>.</span></a>
+      <p>Made for nights in and afternoons that disappear.</p>
+      <span>© <span id="year"></span> Rumi</span>
+    </footer>
+
+    <input class="sr-only" id="file-input" type="file" accept=".csv,.json,application/json,text/csv">
+    <dialog class="details-dialog" id="details-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="Close details">×</button>
+      <div class="dialog-art" id="dialog-art"></div>
+      <div class="dialog-content">
+        <p class="eyebrow" id="dialog-meta"></p>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <a class="button button-primary" id="dialog-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open title <span aria-hidden="true">↗</span></a>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
